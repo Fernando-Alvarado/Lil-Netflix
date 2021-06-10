@@ -17,11 +17,11 @@ function App() {
     <Router>
         <div>
             <Switch>
-                    <Route path="/config">
-                        <PanelDeControl/> 
+                    <Route path="/config"> 
+                        <PanelDeControl/>
                     </Route>
-                    <Route path="/">
-                        <Home/>
+                    <Route path="/"> 
+                        <Home/> 
                     </Route>
             </Switch>
         </div>
