@@ -26,4 +26,3 @@ module.exports =  class Download  {
         getDownMovies(cb)//funcion que regrea la informacion para pner el el panel de control
     }
 }
-
