@@ -1,4 +1,4 @@
-//exporta todo lo que se tiene que renderizar
+//peticiones y respuestasa
 const Movies = require('../../models/controlPanel/downloadedMovies')
 const Links = require('../../models/controlPanel/pastLinks')
 const ErrorDownload = require('../../models/controlPanel/error')
