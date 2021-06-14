@@ -1,0 +1,28 @@
+{
+    "users":[
+        {
+            "id"       : "01",
+            "userName" : "SJ",
+            "name"     : "Samuel",
+            "email"    : "que le importa master",
+            "password" : "ec0839ad9bcf75a3047de0bd16465b4f",
+            "passwordSinHash" : "Una_Contraseña_Muy_Secreta_01"
+        },
+        {
+            "id"       : "02",
+            "userName" : "FA",
+            "name"     : "Fernando",
+            "email"    : "que le importa master",
+            "password" : "5d8998197dee988282bebb240410543d",
+            "passwordSinHash" : "Una_Contraseña_Muy_Secreta_02"
+        },
+        {
+            "id"       : "03",
+            "userName" : "AF",
+            "name"     : "Alberto",
+            "email"    : "que le importa master",
+            "password" : "c5d38e1db44d8eca75e55c79fb0598d4",
+            "passwordSinHash" : "Una_Contraseña_Muy_Secreta_03"
+        }
+    ]
+}

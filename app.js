@@ -1,5 +1,5 @@
 const express = require("express")
-const panelControl = require("./routes/controlPanelRoutes")
+const panelControl = require("./src/routes/controlPanelRoutes")
 
 const app = express()
 
