@@ -9,7 +9,9 @@ import {
 } from "react-router-dom"
 //instalar todas las vistas
 import PanelDeControl from './components/ControlPanel'//importando el panel de control
-import Home from './components/Home'
+import Catalogue from './pages/Catalogue';
+import Register from './pages/Register';
+import LogIn from './pages/LogIn';
 
 
 function App() {
@@ -17,11 +19,17 @@ function App() {
     <Router>
         <div>
             <Switch>
-                    <Route path="/config">
+                    <Route exact path="/config">
                         <PanelDeControl/> 
                     </Route>
-                    <Route path="/">
-                        <Home/>
+                    <Route exact path="/">
+                        <Catalogue/>
+                    </Route>
+                    <Route exact path="/Register">
+                    	<Register/>
+                    </Route>
+                    <Route exact path="/LogIn">
+                    	<LogIn/>
                     </Route>
             </Switch>
         </div>
