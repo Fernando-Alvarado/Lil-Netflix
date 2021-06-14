@@ -22,14 +22,14 @@ function App() {
                     <Route exact path="/config">
                         <PanelDeControl/> 
                     </Route>
-                    <Route exact path="/">
-                        <Catalogue/>
-                    </Route>
                     <Route exact path="/Register">
                     	<Register/>
                     </Route>
                     <Route exact path="/LogIn">
                     	<LogIn/>
+                    </Route>
+                    <Route exact path="/">
+                        <Catalogue/>
                     </Route>
             </Switch>
         </div>
