@@ -13,7 +13,7 @@ const Errores = () => {
         }).then(jsonRes =>{
             setData(Object.values(jsonRes))
         })
-    })   
+    },[])   
     return (
         <div>
             <h1>Errores en las descargas</h1>

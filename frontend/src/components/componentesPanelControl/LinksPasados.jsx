@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react'
+import axios from 'axios'
 
 const LinksPasados = () => {
     const [data, setData] = useState([])
+    const [newMovie, setNweMovie] = useState('')
     useEffect(()=>{
         fetch('http://localhost:3001/DataControlPanelLinks/').then(res => {//luego debemis cambiar esta ruta
             if(res.ok){
@@ -18,10 +20,56 @@ const LinksPasados = () => {
                 delated.push(element)
         });
         setData(delated)
-        //hacer un fetch para guardarlo en la base de datos
+        //hacer un fetch para guardarlo en la base de datos-------------------------------------------
+    }
+    const addMovie = (e)=>{
+        e.preventDefault()
+        if(!newMovie.trim()){
+            console.log("Elemento vacio")
+            //mandar un fetch, para poner un error en la parte de errores-----------------------------
+            return
+          }
+        console.log(newMovie)
+        setData([...data, [newMovie]])
+        //haciendo la peticion para guardar el elemeto---------------------------------
+        /* const user = {
+            "d": newMovie,
+             "sd": "aaaaaa"
+         }
+         const a= JSON.stringify(user)
+           axios.post('http://localhost:3001/DataWritePasteLinks/', {a })
+              .then(res => {
+                 console.log(res);
+                 console.log(res.data);
+             })
+             .catch((err)=>{
+                  console.error(err);
+              })*/
+       
+        //}
+        axios.post('http://localhost:3001/DataWritePasteLinks/', newMovie)
+            .then(res => {
+                        console.log("aaaa")
+                     console.log(res);
+                     console.log(res.body);
+            })
+            .catch((err)=>{
+                console.error(err);
+            })
+
+
+            /*fetch('http://localhost:3001/DataWritePasteLinks/', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({dd: newMovie})
+            });   */ 
+      
         
 
-    }
+    }    
+
     return (
         <div>
             <h1>Peliculas previamente descargadas</h1>
@@ -32,36 +80,18 @@ const LinksPasados = () => {
                     ))
                 }
             </ul>
-            {/* <form>
+            <form onSubmit={addMovie}>
                 <span>Agregar peliculas</span>
-                <input type="text" placeholder="Agregar peliculas" value="NuevaPelicula" > </input>
+                <input 
+                    type="text"
+                    name= "adding" 
+                    placeholder="Agregar peliculas" 
+                    onChange = { e => setNweMovie(e.target.value)}
+                    value = {newMovie}/> 
                 <button type="submit"> Agregar</button>
-            </form> */}
+            </form>
         </div>
     )
 }
 
 export default LinksPasados
-/*
-<form onSubmit={modoEdicion ? editarTare : agregarTarea}>
-                      {
-                        error ? <span className= "text-danger">{error}</span> : null
-                      }
-                    <input
-                      type="text" 
-                      className="form-control mb-2"
-                      placeholder="ingrese tarea" 
-                      onChange={e => setTarea(e.target.value)}-------------------------------------------------------
-                      value={tarea}></input> 
-                    <div className="d-grid gap-2"> 
-                       {
-                         modoEdicion ? (
-                          <button className="btn btn-primary " type="submit"> Editar</button> 
-                         ):(
-                          <button className="btn btn-dark " type="submit"> Agregar</button> 
-                         )
-                       }
-                    </div>
-                   
-                  </form>
-*/

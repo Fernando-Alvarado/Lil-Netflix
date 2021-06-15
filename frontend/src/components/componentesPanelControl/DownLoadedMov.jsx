@@ -11,7 +11,7 @@ const DownLoadedMov = () => {
         }).then(jsonRes =>{
             setData(Object.values(jsonRes))
         })
-    })   
+    },[])   
 
 
     return (
