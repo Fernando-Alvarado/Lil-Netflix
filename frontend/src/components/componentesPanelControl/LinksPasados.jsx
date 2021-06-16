@@ -32,15 +32,16 @@ const LinksPasados = () => {
         console.log(newMovie)
         setData([...data, [newMovie]])
         //haciendo peticion para editar cotas-------------------------------------------------------------
-        axios.post('http://localhost:3001/DataWritePasteLinks/', {"data": newMovie})
+        function peticion(ruta, dataReq){
+            axios.post(ruta, {"data": dataReq})
             .then(res => {
-                        console.log("aaaa")
                      console.log(res);
-                     console.log(res.body);
             })
             .catch((err)=>{
                 console.error(err);
             })
+        }
+        peticion('http://localhost:3001/DataWritePasteLinks/', newMovie)
 
     }    
 

@@ -14,12 +14,7 @@ exports.DownloadedErrors = (req, res)=>{
     ErrorDownload.fetchLinks((props)=>{res.send(props)})
 }
 exports.WritePastLinks = (req, res)=>{
-    
-    res.setHeader('Access-Control-Allow-Origin','http://localhost:3000/config');
-    res.setHeader('Access-Control-Allow-Methods','POST')
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     console.log("hola desdes el controlador")
-    console.log(req.body.data)
     WriteFiles.writeFile(req.body.data)
 
 
