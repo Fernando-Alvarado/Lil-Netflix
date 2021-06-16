@@ -19,8 +19,8 @@ const Errores = () => {
             <h1>Errores en las descargas</h1>
             <ul>
             {
-                data.map((text) =>(
-                    <li> {text} </li>
+                data.map((text, i) =>(
+                    <li key={i}> {text} </li>
                 ))
             }
             </ul>

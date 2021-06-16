@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react'
-import axios from 'axios'
+import {peticion} from '../../exports/controlpanel.js'
+
+
 
 const LinksPasados = () => {
     const [data, setData] = useState([])
@@ -13,15 +15,7 @@ const LinksPasados = () => {
             setData(Object.values(jsonRes))
         })
     },[])
-    const delateElements = (i)=>{//elmininar elemtos del arreglo
-        let delated = []
-        data.forEach(element => {//optimizar
-            if (element !== data[i])
-                delated.push(element)
-        });
-        setData(delated)
-        //hacer un fetch para guardarlo en la base de datos-------------------------------------------
-    }
+    
     const addMovie = (e)=>{
         e.preventDefault()
         if(!newMovie.trim()){
@@ -29,21 +23,23 @@ const LinksPasados = () => {
             //mandar un fetch, para poner un error en la parte de errores-----------------------------
             return
           }
-        console.log(newMovie)
         setData([...data, [newMovie]])
         //haciendo peticion para editar cotas-------------------------------------------------------------
-        function peticion(ruta, dataReq){
-            axios.post(ruta, {"data": dataReq})
-            .then(res => {
-                     console.log(res);
-            })
-            .catch((err)=>{
-                console.error(err);
-            })
-        }
-        peticion('http://localhost:3001/DataWritePasteLinks/', newMovie)
+        peticion('http://localhost:3001/DataWritePasteLinks/', newMovie)//funcion exportada para guardar datos
 
     }    
+    const delateElements = (i, text )=>{//elmininar elemtos del arreglo de los links pasados
+
+        let delated = []
+        data.forEach(element => {//optimizar
+            
+            if (element !== data[i])
+                delated.push(element)
+        });
+        setData(delated)
+        //hacer un fetch para guardarlo en la base de datos-------------------------------------------
+        peticion('http://localhost:3001/DataDelatePastLinks/', text)
+    }
 
     return (
         <div>
@@ -51,7 +47,7 @@ const LinksPasados = () => {
             <ul>
                 {
                     data.map((text, i) =>(
-                    <li key={i}> {text}  <button onClick={()=>{delateElements(i)}}>Eliminar </button> </li>  
+                    <li key={i}> {text}  <button onClick={()=>{delateElements(i, text)}}>Eliminar </button> </li>  
                     ))
                 }
             </ul>

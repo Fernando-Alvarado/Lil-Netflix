@@ -11,30 +11,34 @@ const writePastLinks = (element, file)=>{
         if(err)
             return console.error(err);
         let content = JSON.parse(data)//pasado de binario a json
-        let arrayContent = Object.values(content)
+        let arrayContent = Object.values(content)//pasar de json a arreglo
         if(arrayContent[arrayContent.length - 1] !== element){
-            arrayContent.push(element)
-            let exitJson = JSON.stringify({...arrayContent})
+            container = []
+            arrayContent.forEach(i => {
+                if(i !== element)
+                    container.push(i)
+            });
+            let exitJson = JSON.stringify({...container})
             fs.writeFile(DownPath, exitJson, (err)=>{
-             if(err)
-                console.log(err)
-            console.log("modificado con exito")
-        })
+                if(err)
+                    console.log(err)
+                console.log("Eliminado con exito")
+            })
         }
         
 
 
-        })
+    })
 
 }
 
 
 
-module.exports = class WritePastLinks  {
+module.exports = class DelateElements  {
     constructor(obj){
         this.data = obj
     }
-    static writeFile(element, file) {
+    static Delate(element, file) {
         console.log("working")
         writePastLinks(element, file)
         
