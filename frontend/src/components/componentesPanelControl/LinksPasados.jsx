@@ -31,23 +31,8 @@ const LinksPasados = () => {
           }
         console.log(newMovie)
         setData([...data, [newMovie]])
-        //haciendo la peticion para guardar el elemeto---------------------------------
-        /* const user = {
-            "d": newMovie,
-             "sd": "aaaaaa"
-         }
-         const a= JSON.stringify(user)
-           axios.post('http://localhost:3001/DataWritePasteLinks/', {a })
-              .then(res => {
-                 console.log(res);
-                 console.log(res.data);
-             })
-             .catch((err)=>{
-                  console.error(err);
-              })*/
-       
-        //}
-        axios.post('http://localhost:3001/DataWritePasteLinks/', newMovie)
+        //haciendo peticion para editar cotas-------------------------------------------------------------
+        axios.post('http://localhost:3001/DataWritePasteLinks/', {"data": newMovie})
             .then(res => {
                         console.log("aaaa")
                      console.log(res);
@@ -56,17 +41,6 @@ const LinksPasados = () => {
             .catch((err)=>{
                 console.error(err);
             })
-
-
-            /*fetch('http://localhost:3001/DataWritePasteLinks/', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({dd: newMovie})
-            });   */ 
-      
-        
 
     }    
 

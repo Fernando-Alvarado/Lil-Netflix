@@ -32,6 +32,5 @@ module.exports =  class WritePastLinks  {
     }
     static writeFile(element) {
         writePastLinks(element)
-        console.log("hola")
     }
 }
